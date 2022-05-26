@@ -1,56 +1,33 @@
 SEVA Medical Sections Extraction
 ==============================
 
-The repository for the SEVPhysionNet publication "Semi-supervised Extraction, Validation and model-based Analysis of Medical Sections in MIMIC-III Patient Notes"
+The repository for the SEVA PhysionNet publication "Semi-supervised Extraction, Validation and model-based Analysis of Medical Sections in MIMIC-III Patient Notes"
 
-Project Organization
+Repo Organization
 ------------
 
     ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
+    ├── data               <- The main data directory. Please store all data files from the PhysioNet project here to make the other scripts work.
     │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
+    ├── notebooks          <- Jupyter notebooks for loading the SVC models and generating sections from MIMIC
     │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
+    ├── src                <- The Python module for the sectioning code. Imported by the other notebooks and scripts.
     │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
     │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+    ├── requirements.txt   <- The requirements file for the notebooks and scripts. Jupyter should already be present on your system and is thus not included here. Generated with `pip freeze > requirements.txt`
     │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
-
+    ├── setup.py           <- Makes sectioning module pip installable (pip install -e .) so src can be imported
+    └── src                <- Source code for use in this project.
+        ├── __init__.py    <- Makes src a Python module
+        │
+        ├── data           <- Helper to load and process the trigger file etc.
+        │
+        ├── db             <- Helpers to interface Google BigQuery MIMIC tables
+        │
+        ├── models         <- Helpers to utilize the pre-trained SVC sectioning models
+        │
+        └── sectioning     <- Core module which contains all the sectioning logic
+    
 
 --------
 
