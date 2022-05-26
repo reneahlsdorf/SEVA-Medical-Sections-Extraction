@@ -1,3 +1,10 @@
+# Custom
+
+client.json
+
+data/*
+!data/README.md
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
